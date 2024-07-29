@@ -10,7 +10,7 @@ To run this project, you will need to add the following environment variables to
 
 #### Backend
 
-`MONGODB_URI` `SECRET_KEY` `FRONTEND_URL` `BACKEND_URL`
+`MONGODB_URI` `SECRET_KEY`
 
 #### Frontend
 
