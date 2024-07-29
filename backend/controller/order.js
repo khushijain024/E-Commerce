@@ -37,9 +37,6 @@ exports.updateOrderStatus = async (req, res) => {
 
     try {
         const order = await Order.findById(id);
-        // console.log('Order:', order);
-        // console.log('Status:', status);
-        // console.log('ID:', id);
         if (!order) {
             return res.status(404).send({ message: "Order not found" });
         }
@@ -51,7 +48,6 @@ exports.updateOrderStatus = async (req, res) => {
         }));
 
         const updatedOrder = await order.save();
-        // console.log("updatedOrder: ", updatedOrder);
         res.status(200).send({ message: "Order status updated", data: updatedOrder });
     } catch (error) {
         console.error(error);

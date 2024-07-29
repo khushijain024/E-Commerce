@@ -4,12 +4,14 @@ import Hero from '../../assets/Hero.jpeg'
 import headphones from '../../assets/headphones.jpeg'
 import speaker from '../../assets/speaker.jpeg'
 import smartwatch from '../../assets/Smartwatch.jpeg'
+import camera from '../../assets/camera.jpeg'
 
-const categoryImages = { speaker, headphones, smartwatch };
+const categoryImages = { speaker, headphones, smartwatch ,camera};
 
 const categories = [
     // { name: 'Speaker', image: categoryImages.speaker, id: 'speaker' },
     { name: 'Headphones', image: categoryImages.headphones, id: 'headphones' },
+    { name: 'camera', image: categoryImages.camera, id: 'camera' },
     { name: 'Smartwatch', image: categoryImages.smartwatch, id: 'smartwatch' },
 ];
 
@@ -57,7 +59,7 @@ export default Home;
 
 const CategoryCard = ({ category, onSelect }) => (
     <div onClick={() => onSelect(category.id)} className="cursor-pointer group ">
-        <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ">
+        <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2  h-[89vh] ">
             <img src={category.image} alt={category.name} className="w-full object-cover group-hover:scale-125 transition-all duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-70 group-hover:opacity-80 transition-opacity duration-300"></div>
             <div className="absolute top-0 right-0 p-6">
