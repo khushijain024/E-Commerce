@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Hero from '../../assets/Hero.jpeg'
 import headphones from '../../assets/headphones.jpeg'
-import speaker from '../../assets/speaker.jpeg'
+// import speaker from '../../assets/speaker.jpeg'
 import smartwatch from '../../assets/Smartwatch.jpeg'
 import camera from '../../assets/camera.jpeg'
 
-const categoryImages = { speaker, headphones, smartwatch ,camera};
+const categoryImages = { headphones, smartwatch ,camera};
 
 const categories = [
     // { name: 'Speaker', image: categoryImages.speaker, id: 'speaker' },
