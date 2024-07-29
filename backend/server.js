@@ -60,7 +60,7 @@ app.post("/create-checkout-session", async (req, res) => {
     payment_method_types: ["card"],
     line_items: lineItems,
     mode: "payment",
-    success_url: `${process.env.BACKEND_URL}/paymentsuccess?session_id={CHECKOUT_SESSION_ID}`,
+    success_url: `https://fonik-backend.vercel.app/paymentsuccess?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: `https://fonik.vercel.app/paymentcancel`,
     metadata: {
       userId,
@@ -74,18 +74,8 @@ app.post("/create-checkout-session", async (req, res) => {
     },
   });
 
-  // Sending the session ID as a response
+
   res.json({ id: session.id });
-  console.log(
-    "session id: ",
-    session.id,
-    "success_url: ",
-    session.success_url,
-    "cancel_url: ",
-    session.cancel_url,
-    "metadata: ",
-    session.metadata
-  );
   // const order = new Order({
   //     product : products , userId , customerName , customerContactNumber , address , pinCode : +pinCode , transactionId : session.id,  paymentStatus: 'success'
   // });
@@ -95,12 +85,9 @@ app.post("/create-checkout-session", async (req, res) => {
 // Handle payment success
 app.get(`/paymentsuccess`, async (req, res) => {
   const { session_id } = req.query;
-  // console.log("session_id: ", session_id);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
-    //   console.log("session:", session);
-    //   console.log("session.metadata:", session.metadata);
 
     if (session.payment_status === "paid") {
       // Payment was successful, now retrieve the order details from metadata
@@ -140,7 +127,7 @@ app.get(`/paymentsuccess`, async (req, res) => {
       console.log("Order: ", order);
       await order.save();
       console.log("Its Done.....");
-      res.redirect(`https://fonik-backend.vercel.app/paymentsuccess`);
+      res.redirect(`https://fonik.vercel.app/paymentsuccess`);
     } else {
       res.redirect(`https://fonik.vercel.app/paymentcancel`);
     }
